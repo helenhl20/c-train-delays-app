@@ -52,7 +52,3 @@ This app is configured for deployment on Render. The `render.yaml` file contains
 2. Tap the Share button
 3. Select "Add to Home Screen"
 4. The app will appear as an icon on your home screen
-
-## License
-
-MIT
