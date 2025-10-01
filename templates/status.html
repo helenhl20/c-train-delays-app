@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}C Train Status - {{ status|title }}{% endblock %}
+
+{% block content %}
+    <div class="train-icon">🚇</div>
+    <h1>C Train Status</h1>
+
+    {% if status == 'on_time' %}
+        <div class="status-badge status-on-time">✓ On Time</div>
+        <p>All systems running smoothly! The C Train is operating on schedule.</p>
+    {% elif status == 'delayed' %}
+        <div class="status-badge status-delayed">⚠ Delayed</div>
+        <p>The C Train is experiencing delays. Please allow extra travel time.</p>
+    {% elif status == 'alert' %}
+        <div class="status-badge status-alert">⚠ Service Alert</div>
+        <p>There are active service alerts for the C Train. Check MTA for details.</p>
+    {% endif %}
+{% endblock %}
