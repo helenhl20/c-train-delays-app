@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 import UserNotifications
 #if canImport(UIKit)
 import UIKit
@@ -92,12 +93,13 @@ class CTrainStatusManager: ObservableObject {
     private func parseHTMLStatus(from html: String) -> TrainStatus {
         let lowercased = html.lowercased()
 
-        if lowercased.contains("service alert") || lowercased.contains("status-alert") {
-            return .alert
-        } else if lowercased.contains("delayed") || lowercased.contains("status-delayed") {
-            return .delayed
-        } else if lowercased.contains("on time") || lowercased.contains("status-on-time") {
+        // Look for the active status badge by checking the specific div combinations
+        if lowercased.contains("<div class=\"status-badge status-on-time\">") {
             return .onTime
+        } else if lowercased.contains("<div class=\"status-badge status-delayed\">") {
+            return .delayed
+        } else if lowercased.contains("<div class=\"status-badge status-alert\">") {
+            return .alert
         }
 
         return .error("Unknown status")
