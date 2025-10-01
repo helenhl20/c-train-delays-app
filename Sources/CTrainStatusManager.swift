@@ -9,7 +9,7 @@ class CTrainStatusManager: ObservableObject {
     @Published var lastUpdated: Date?
 
     // Update this URL after deploying to Render
-    private let apiURL = "https://YOUR-APP-NAME.onrender.com"
+    private let apiURL = "https://c-train-delays-app.onrender.com"
     private var lastNotifiedStatus: TrainStatus?
 
     enum TrainStatus: Equatable {
